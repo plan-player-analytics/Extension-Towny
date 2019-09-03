@@ -31,11 +31,11 @@ import java.util.Optional;
  *
  * @author Rsl1122
  */
-public class NewExtensionFactory {
+public class TownyExtensionFactory {
 
     private boolean isAvailable() {
         try {
-            Class.forName("");
+            Class.forName("com.palmergames.bukkit.towny.Towny");
             return true;
         } catch (ClassNotFoundException e) {
             return false;
@@ -44,7 +44,7 @@ public class NewExtensionFactory {
 
     public Optional<DataExtension> createExtension() {
         if (isAvailable()) {
-            return Optional.of(new NewExtension());
+            return Optional.of(new TownyExtension());
         }
         return Optional.empty();
     }
