@@ -1,4 +1,5 @@
-# Extension template
-Template for creating new Plan DataExtension API projects
+# Towny Extension
+
+DataExtension for [Towny plugin](https://github.com/TownyAdvanced/Towny)
 
 - [DataExtension API Documentation](https://github.com/plan-player-analytics/Plan/wiki/APIv5)
