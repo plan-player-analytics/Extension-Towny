@@ -6,7 +6,7 @@
 
     <groupId>com.djrapitops</groupId>
     <artifactId>Extension-Towny</artifactId>
-    <version>0.92.0.0-R0.1</version>
+    <version>0.96.7.4-R0.1</version>
     <build>
         <plugins>
             <plugin>
@@ -27,17 +27,12 @@
     </build>
 
     <repositories>
-        <repository>
-            <id>plan-bintray</id>
-            <url>https://dl.bintray.com/rsl1122/Plan-repository/</url>
-        </repository>
-
         <!-- Platforms -->
 
-        <!--<repository>-->
-        <!--<id>spigot-repo</id>-->
-        <!--<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>-->
-        <!--</repository>-->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
         <!--<repository>-->
         <!--<id>sponge-repo</id>-->
         <!--<url>https://repo.spongepowered.org/maven</url>-->
@@ -50,32 +45,39 @@
         <!--<id>velocity-repo</id>-->
         <!--<url>https://repo.velocitypowered.com/snapshots/</url>-->
         <!--</repository>-->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>plan-repo</id>
+            <url>https://repo.playeranalytics.net/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
         <dependency> <!-- Plan API -->
             <groupId>com.djrapitops</groupId>
-            <artifactId>Plan-api</artifactId>
-            <version>5.0-R0.3</version>
+            <artifactId>plan-api</artifactId>
+            <version>5.2-R0.1</version>
             <scope>provided</scope>
         </dependency>
 
         <!-- Plugin API Dependency -->
         <dependency>
-            <groupId>com.palmergames</groupId>
-            <artifactId>towny</artifactId>
-            <version>0.92.0.0</version>
-            <scope>provided</scope>
+            <groupId>com.github.TownyAdvanced</groupId>
+            <artifactId>Towny</artifactId>
+            <version>0.96.7.4</version>
         </dependency>
 
         <!-- Platforms -->
 
-        <!--<dependency>-->
-        <!--<groupId>org.spigotmc</groupId>-->
-        <!--<artifactId>spigot-api</artifactId>-->
-        <!--<version>1.12.2-R0.1-SNAPSHOT</version>-->
-        <!--<scope>provided</scope>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.12.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>org.spongepowered</groupId>-->
         <!--<artifactId>spongeapi</artifactId>-->
@@ -117,9 +119,8 @@
 
     <distributionManagement>
         <repository>
-            <id>bintray-rsl1122-Plan-repository</id>
-            <name>rsl1122-Plan-repository</name>
-            <url>https://api.bintray.com/maven/rsl1122/Plan-repository/Extension-Towny/;publish=1</url>
+            <id>plan-repo</id>
+            <url>https://repo.playeranalytics.net/releases</url>
         </repository>
     </distributionManagement>
 

@@ -1,5 +1,5 @@
 /*
-    Copyright(c) 2019 Risto Lahtela (Rsl1122)
+    Copyright(c) 2019 Risto Lahtela (AuroraLS3)
 
     The MIT License(MIT)
 
@@ -32,6 +32,8 @@ import com.djrapitops.plan.extension.annotation.StringProvider;
 import com.djrapitops.plan.extension.icon.Color;
 import com.djrapitops.plan.extension.icon.Family;
 import com.djrapitops.plan.settings.SettingsService;
+import com.palmergames.bukkit.towny.TownyAPI;
+import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.exceptions.TownyException;
 import com.palmergames.bukkit.towny.object.*;
@@ -43,7 +45,7 @@ import java.util.Optional;
 /**
  * Towny DataExtension.
  *
- * @author Rsl1122
+ * @author AuroraLS3
  */
 @PluginInfo(name = "Towny", iconName = "university", iconFamily = Family.SOLID, color = Color.BROWN)
 public class TownyExtension implements DataExtension {
@@ -53,12 +55,12 @@ public class TownyExtension implements DataExtension {
 
     private Resident getResident(String playerName) {
         try {
-            Resident resident = TownyUniverse.getDataSource().getResident(playerName);
+            Resident resident = TownyAPI.getInstance().getResident(playerName);
             if (resident == null) {
                 throw new NotReadyException();
             }
             return resident;
-        } catch (NotRegisteredException e) {
+        } catch (RuntimeException e) {
             throw new NotReadyException();
         }
     }
@@ -124,8 +126,8 @@ public class TownyExtension implements DataExtension {
 
     private Town getTown(Group townName) {
         try {
-            return TownyUniverse.getDataSource().getTown(townName.getGroupName());
-        } catch (NotRegisteredException e) {
+            return TownyAPI.getInstance().getTown(townName.getGroupName());
+        } catch (RuntimeException e) {
             throw new NotReadyException();
         }
     }
@@ -139,7 +141,7 @@ public class TownyExtension implements DataExtension {
     )
     public long numberOfTowns() {
         List<String> ignoredTowns = getIgnoredTowns();
-        return TownyUniverse.getDataSource().getTowns()
+        return TownyAPI.getInstance().getDataSource().getTowns()
                 .stream()
                 .map(Town::getName)
                 .filter(townName -> !ignoredTowns.contains(townName))
