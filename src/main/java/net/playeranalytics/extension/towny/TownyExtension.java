@@ -33,10 +33,12 @@ import com.djrapitops.plan.extension.icon.Color;
 import com.djrapitops.plan.extension.icon.Family;
 import com.djrapitops.plan.settings.SettingsService;
 import com.palmergames.bukkit.towny.TownyAPI;
-import com.palmergames.bukkit.towny.TownyUniverse;
 import com.palmergames.bukkit.towny.exceptions.NotRegisteredException;
 import com.palmergames.bukkit.towny.exceptions.TownyException;
-import com.palmergames.bukkit.towny.object.*;
+import com.palmergames.bukkit.towny.object.Coord;
+import com.palmergames.bukkit.towny.object.Nation;
+import com.palmergames.bukkit.towny.object.Resident;
+import com.palmergames.bukkit.towny.object.Town;
 
 import java.util.Collections;
 import java.util.List;
@@ -141,7 +143,8 @@ public class TownyExtension implements DataExtension {
     )
     public long numberOfTowns() {
         List<String> ignoredTowns = getIgnoredTowns();
-        return TownyAPI.getInstance().getDataSource().getTowns()
+
+        return TownyAPI.getInstance().getTowns()
                 .stream()
                 .map(Town::getName)
                 .filter(townName -> !ignoredTowns.contains(townName))
